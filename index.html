@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta | Administração Inteligente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #004aad; /* Azul Corporativo Profundo */
+            --accent-color: #00b4d8; /* Azul Claro para destaque */
+            --text-dark: #333;
+            --light-bg: #f8f9fa;
+        }
+        
+        body { font-family: 'Roboto', sans-serif; }
+
+        /* 1. TOP BAR */
+        .top-bar {
+            background-color: var(--primary-color);
+            font-size: 0.85rem;
+        }
+        .top-bar a { color: white; text-decoration: none; transition: 0.3s; }
+        .top-bar a:hover { color: var(--accent-color); }
+
+        /* 2. NAVBAR PRINCIPAL */
+        .navbar { box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-link { font-weight: 500; color: var(--text-dark) !important; }
+        .nav-link:hover { color: var(--primary-color) !important; }
+
+        /* 3. HERO CAROUSEL */
+        .carousel-item { height: 500px; }
+        .carousel-item img { object-fit: cover; height: 100%; filter: brightness(0.6); }
+        .carousel-caption { bottom: 20%; text-align: left; }
+        .carousel-caption h1 { font-size: 3.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+        /* 4. CARDS DE SERVIÇOS (SOLUÇÕES) */
+        .solution-card {
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--accent-color);
+        }
+        .icon-box {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* 5. PARCEIROS */
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: 0.3s;
+            max-height: 50px;
+        }
+        .partner-logo:hover { filter: grayscale(0); opacity: 1; }
+
+        /* 6. CTA / RODAPÉ */
+        .cta-section { background-color: var(--accent-color); color: white; }
+        footer { background-color: #1a1a1a; color: #aaa; }
+        footer h5 { color: white; font-weight: 700; margin-bottom: 1.5rem; }
+        footer a { color: #aaa; text-decoration: none; }
+        footer a:hover { color: white; }
+
+        /* Botão Login Destacado */
+        .btn-login-nav {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .btn-login-nav:hover { background: var(--primary-color); color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar py-2 text-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-none d-md-block">
+                <i class="bi bi-telephone-fill me-2"></i> (11) 4004-0000 | 
+                <i class="bi bi-whatsapp ms-3 me-2"></i> (11) 99999-9999
+            </div>
+            <div class="d-flex gap-3">
+                <a href="cotacao.html"><i class="bi bi-calculator"></i> Cotação Online</a>
+                <a href="#"><i class="bi bi-people-fill"></i> Portal do Síndico</a>
+                <a href="#"><i class="bi bi-briefcase-fill"></i> Trabalhe Conosco</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary fs-3" href="#">
+                <i class="bi bi-buildings"></i> Nome Empresa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">A Empresa</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Segmentos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Residenciais</a></li>
+                            <li><a class="dropdown-item" href="#">Comerciais</a></li>
+                            <li><a class="dropdown-item" href="#">Associações</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="#solucoes">Soluções</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                </ul>
+                
+                <a href="login.html" class="btn btn-login-nav rounded-pill px-4">
+                    <i class="bi bi-person-circle"></i> Área do Cliente
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://source.unsplash.com/1920x800/?family,garden" class="d-block w-100" alt="Residencial">
+                <div class="carousel-caption d-none d-md-block container">
+                    <h1 class="display-3">Viver bem une pessoas.</h1>
+                    <p class="fs-4">Gestão humanizada para condomínios residenciais de todos os tamanhos.</p>
+                    <button class="btn btn-primary btn-lg mt-3">Saiba Mais</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1920x800/?office,building-glass" class="d-block w-100" alt="Comercial">
+                <div class="carousel-caption d-none d-md-block container">
+                    <h1 class="display-3">Seu negócio no lugar certo.</h1>
+                    <p class="fs-4">Eficiência e valorização patrimonial para prédios comerciais.</p>
+                    <button class="btn btn-light btn-lg mt-3 text-primary">Conheça Nossas Soluções</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1920x800/?technology,tablet" class="d-block w-100" alt="Digital">
+                <div class="carousel-caption d-none d-md-block container">
+                    <h1 class="display-3">SimplesCondo Digital.</h1>
+                    <p class="fs-4">Tudo o que você precisa a um toque de distância no nosso App.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <section id="solucoes" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h5 class="text-primary fw-bold text-uppercase ls-2">Nossas Soluções</h5>
+                <h2 class="fw-bold">Tudo para facilitar o dia a dia do síndico e condômino</h2>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+                
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-clipboard-data icon-box"></i>
+                        <h5 class="fw-bold">Prestação de Contas</h5>
+                        <p class="text-muted small">Transparência total com balancetes digitais em tempo real.</p>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-cash-coin icon-box"></i>
+                        <h5 class="fw-bold">Gestão Financeira</h5>
+                        <p class="text-muted small">Controle de inadimplência e contas a pagar automatizado.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-hammer icon-box"></i>
+                        <h5 class="fw-bold">Assessoria Jurídica</h5>
+                        <p class="text-muted small">Apoio especializado em legislação condominial e trabalhista.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-people icon-box"></i>
+                        <h5 class="fw-bold">Gestão de RH</h5>
+                        <p class="text-muted small">Folha de pagamento, benefícios e treinamento de portaria.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-phone icon-box"></i>
+                        <h5 class="fw-bold">App Exclusivo</h5>
+                        <p class="text-muted small">Reservas, comunicados e enquetes na palma da mão.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-shield-check icon-box"></i>
+                        <h5 class="fw-bold">Seguros</h5>
+                        <p class="text-muted small">Cotação e renovação de seguros obrigatórios.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-recycle icon-box"></i>
+                        <h5 class="fw-bold">Sustentabilidade</h5>
+                        <p class="text-muted small">Consultoria para coleta seletiva e economia de água.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card solution-card h-100 p-4 text-center">
+                        <i class="bi bi-headset icon-box"></i>
+                        <h5 class="fw-bold">Atendimento 24h</h5>
+                        <p class="text-muted small">Central de emergência para problemas prediais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section py-5 text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-3">Seu condomínio merece uma gestão eficiente</h2>
+            <p class="lead mb-4">Solicite uma proposta personalizada em menos de 2 minutos.</p>
+            <button class="btn btn-light btn-lg text-primary fw-bold px-5 rounded-pill shadow">
+                Fazer Cotação Agora
+            </button>
+        </div>
+    </section>
+
+    <footer class="pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-4"><i class="bi bi-buildings"></i> SimplesCondo</h4>
+                    <p class="small">
+                        Há mais de 20 anos transformando a vida em condomínio. 
+                        Unimos tecnologia e atendimento humanizado para valorizar seu patrimônio.
+                    </p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="fs-4"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-4"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Institucional</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">LelloLab (Inovação)</a></li>
+                        <li><a href="#">Nossa História</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Para Você</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="#">Área do Condômino</a></li>
+                        <li><a href="#">2ª Via de Boleto</a></li>
+                        <li><a href="#">Reservas</a></li>
+                        <li><a href="#">Prestação de Contas</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h5>Fale Conosco</h5>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Av. Paulista, 1000 - São Paulo/SP</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (11) 3003-0000</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> contato@simplescondo.com.br</li>
+                    </ul>
+                    <div class="mt-3">
+                        <img src="https://via.placeholder.com/100x40?text=App+Store" alt="App Store" class="me-2 opacity-50">
+                        <img src="https://via.placeholder.com/100x40?text=Google+Play" alt="Google Play" class="opacity-50">
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-secondary my-5">
+
+            <div class="row align-items-center small">
+                <div class="col-md-6 text-center text-md-start">
+                    &copy; 2026 SimplesCondo Administração. Todos os direitos reservados.
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <a href="#" class="me-3">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

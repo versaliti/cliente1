@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotação Online | SimplesCondo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary-color: #004aad;
+            --light-bg: #f8f9fa;
+        }
+
+        body { background-color: var(--light-bg); }
+
+        /* Estilo dos Cards do Formulário */
+        .form-section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar Fixa (Sticky) */
+        .sidebar-trust {
+            position: sticky;
+            top: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        .trust-item i {
+            color: #198754; /* Verde sucesso */
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-white shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="bi bi-arrow-left me-2"></i> Voltar ao Início
+            </a>
+            <span class="text-muted small">Passo 1 de 1</span>
+        </div>
+    </nav>
+
+    <div class="container pb-5">
+        <div class="row">
+            
+            <div class="col-12 mb-4 text-center text-md-start">
+                <h2 class="fw-bold">Solicite uma proposta para seu condomínio</h2>
+                <p class="text-muted">Receba uma análise completa em até 24 horas.</p>
+            </div>
+
+            <div class="col-lg-8">
+                <form id="quoteForm" onsubmit="enviarCotacao(event)">
+                    
+                    <div class="form-section">
+                        <h4 class="section-title"><span class="section-number">1</span> Seus Dados</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Seu cargo no condomínio</label>
+                                <select class="form-select" required>
+                                    <option value="" selected disabled>Selecione...</option>
+                                    <option>Síndico(a)</option>
+                                    <option>Conselheiro(a)</option>
+                                    <option>Morador(a)</option>
+                                    <option>Zelador(a) / Gerente</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Telefone / WhatsApp</label>
+                                <input type="tel" class="form-control" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4 class="section-title"><span class="section-number">2</span> Dados do Condomínio</h4>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Nome do Condomínio</label>
+                                <input type="text" class="form-control" placeholder="Ex: Edifício Solar das Palmeiras">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">CEP</label>
+                                <input type="text" class="form-control" placeholder="00000-000">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Nº de Unidades (Aptos)</label>
+                                <input type="number" class="form-control" placeholder="Ex: 60">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Nº de Torres</label>
+                                <input type="number" class="form-control" placeholder="Ex: 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4 class="section-title"><span class="section-number">3</span> O que vocês precisam?</h4>
+                        <p class="small text-muted mb-3">Selecione as principais prioridades (pode marcar várias):</p>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="form-check p-3 border rounded bg-light">
+                                    <input class="form-check-input" type="checkbox" id="check1">
+                                    <label class="form-check-label" for="check1">Reduzir a inadimplência</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check p-3 border rounded bg-light">
+                                    <input class="form-check-input" type="checkbox" id="check2">
+                                    <label class="form-check-label" for="check2">Melhorar atendimento ao morador</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check p-3 border rounded bg-light">
+                                    <input class="form-check-input" type="checkbox" id="check3">
+                                    <label class="form-check-label" for="check3">Assessoria Jurídica / Trabalhista</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check p-3 border rounded bg-light">
+                                    <input class="form-check-input" type="checkbox" id="check4">
+                                    <label class="form-check-label" for="check4">Digitalizar processos (App/Site)</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <label class="form-label">Mensagem Adicional (Opcional)</label>
+                            <textarea class="form-control" rows="3" placeholder="Conte mais detalhes sobre a situação atual..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg py-3 fw-bold shadow">
+                            SOLICITAR PROPOSTA GRATUITA
+                        </button>
+                        <p class="text-center text-muted small mt-2">
+                            <i class="bi bi-lock-fill"></i> Seus dados estão seguros. Não enviamos spam.
+                        </p>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="sidebar-trust">
+                    
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body bg-primary text-white rounded p-4">
+                            <h5 class="fw-bold mb-3">Por que a SimplesCondo?</h5>
+                            <div class="trust-item text-white">
+                                <i class="bi bi-check-circle-fill text-info"></i>
+                                <span>Economia média de 20% nas contas do condomínio.</span>
+                            </div>
+                            <div class="trust-item text-white">
+                                <i class="bi bi-check-circle-fill text-info"></i>
+                                <span>Atendimento exclusivo via WhatsApp para o síndico.</span>
+                            </div>
+                            <div class="trust-item text-white">
+                                <i class="bi bi-check-circle-fill text-info"></i>
+                                <span>Prestação de contas auditada mensalmente.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm bg-white">
+                        <div class="card-body p-4 text-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3" width="60">
+                            <p class="fst-italic text-muted">"A transição foi super tranquila e o app facilitou muito a vida dos moradores."</p>
+                            <h6 class="fw-bold m-0">Carlos Mendes</h6>
+                            <small class="text-muted">Síndico no Morumbi</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function enviarCotacao(event) {
+            event.preventDefault();
+            // Aqui você colocaria o código real de envio
+            const btn = document.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert("Sua solicitação foi enviada! Um consultor entrará em contato em breve.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                document.getElementById('quoteForm').reset();
+            }, 2000);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
